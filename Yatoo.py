@@ -143,6 +143,7 @@ def genHash():
 if __name__ == "__main__":
     # tk init
     rootWindow = Tk()
+    rootWindow.title("Yatoo")
     # function frame init
     passwdGen = Frame(rootWindow)
     passwdGen.pack()
