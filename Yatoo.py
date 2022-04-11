@@ -2,6 +2,61 @@ from tkinter import *
 import random
 import string
 import hashlib
+from Crypto.Cipher import ARC4
+import base64
+
+def cdFunc():
+    mode = cdMode.get()
+    value = valueEntry.get()
+    key = keyEntry.get()
+    if mode == "rc4de":
+        resultFunc = str((ARC4.new(bytes(key, encoding='utf-8'))).decrypt(base64.b64decode(value)),'utf8')
+        cdResultEntry.delete(0, "end")
+        cdResultEntry.insert(0, resultFunc)
+    elif mode == "rc4en":
+        resultFunc = str((base64.b64encode((ARC4.new(bytes(key, encoding='utf-8'))).encrypt(value.encode('utf-8')))),'utf8')
+        cdResultEntry.delete(0, "end")
+        cdResultEntry.insert(0, resultFunc)
+    elif mode == "b16en":
+        resultFunc = base64.b16encode(value.encode("utf-8"))
+        cdResultEntry.delete(0, "end")
+        cdResultEntry.insert(0, resultFunc)
+    elif mode == "b16de":
+        resultFunc = base64.b16decode(value.encode("utf-8"))
+        cdResultEntry.delete(0, "end")
+        cdResultEntry.insert(0, resultFunc)
+    elif mode == "b32en":
+        resultFunc = base64.b32encode(value.encode("utf-8"))
+        cdResultEntry.delete(0, "end")
+        cdResultEntry.insert(0, resultFunc)
+    elif mode == "b32de":
+        resultFunc = base64.b32decode(value.encode("utf-8"))
+        cdResultEntry.delete(0, "end")
+        cdResultEntry.insert(0, resultFunc)
+    elif mode == "b64en":
+        resultFunc = base64.b64encode(value.encode("utf-8"))
+        cdResultEntry.delete(0, "end")
+        cdResultEntry.insert(0, resultFunc)
+    elif mode == "b64de":
+        resultFunc = base64.b64decode(value.encode("utf-8"))
+        cdResultEntry.delete(0, "end")
+        cdResultEntry.insert(0, resultFunc)
+    elif mode == "b85en":
+        resultFunc = base64.b85encode(value.encode("utf-8"))
+        cdResultEntry.delete(0, "end")
+        cdResultEntry.insert(0, resultFunc)
+    elif mode == "b85de":
+        resultFunc = base64.b85decode(value.encode("utf-8"))
+        cdResultEntry.delete(0, "end")
+        cdResultEntry.insert(0, resultFunc)
+    elif mode == "a85en":
+        resultFunc = base64.a85encode(value.encode("utf-8"))
+        cdResultEntry.delete(0, "end")
+        cdResultEntry.insert(0, resultFunc)
+    elif mode == "a85de":
+        resultFunc = base64.a85decode(value.encode("utf-8"))
+        cdResultEntry.delete(0, "end")
+        cdResultEntry.insert(0, resultFunc)
 
 def genCode():
     lenChoice = digitChoiceVar.get()
@@ -93,6 +148,8 @@ if __name__ == "__main__":
     passwdGen.pack()
     hashGen = Frame(rootWindow)
     hashGen.pack()
+    codeDecode = Frame(rootWindow)
+    codeDecode.pack()
     # passwd gen start
     if True:
         # dynamic var init
@@ -123,6 +180,7 @@ if __name__ == "__main__":
         # output
         resultEntry = Entry(resultDisplay)
         resultEntry.pack()
+        resultEntry.insert(0, "<Value>")
         # gen button
         Button(resultDisplay, text="Generate!", command=genCode).pack()
     # hash gen start
@@ -136,7 +194,7 @@ if __name__ == "__main__":
         hashMode2 = Frame(hashGen)
         hashMode2.grid(column=1,row=0, sticky="n")
         inputAndRun = Frame(hashGen)
-        inputAndRun.grid(columnspan=4, row=1, sticky="n")
+        inputAndRun.grid(columnspan=2, row=1, sticky="n")
         # mode lst 1
         Radiobutton(hashMode1, text="MD4", value="MD4", variable=hashModeChoiceVar).grid(column=0, row=0, sticky="w")
         Radiobutton(hashMode1, text="MD5", value="MD5", variable=hashModeChoiceVar).grid(column=0, row=1, sticky="w")
@@ -157,18 +215,52 @@ if __name__ == "__main__":
         # string before gen
         inputEntry = Entry(inputAndRun)
         inputEntry.pack()
+        inputEntry.insert(0, "<Value>")
         outputEntry = Entry(inputAndRun)
         outputEntry.pack()
+        outputEntry.insert(0, "<Hash>")
         # gen button
         Button(inputAndRun, text="Generate!", command=genHash).pack()
+    # hash gen end
     
-    
-    
-    
-    
-    
-    
-    
-    
+    # code decode start
+    if True:
+        # cd var init
+        cdMode = StringVar()
+        cdMode.set("rc4de")
+        # inner frame
+        cd1 = Frame(codeDecode)
+        cd1.grid(row=0, column=0, sticky="n")
+        cd2 = Frame(codeDecode)
+        cd2.grid(row=0, column=1, sticky="n")
+        usrPrompt = Frame(codeDecode)
+        usrPrompt.grid(columnspan=2, row=1, sticky="n")
+        # cd lst1
+        Radiobutton(cd1, text="RC4 De", value="rc4de", variable=cdMode).grid(column=0, row=0, sticky="w")
+        Radiobutton(cd1, text="Base16 De", value="b16de", variable=cdMode).grid(column=0, row=1, sticky="w")
+        Radiobutton(cd1, text="Base32 De", value="b32de", variable=cdMode).grid(column=0, row=2, sticky="w")
+        Radiobutton(cd1, text="Base64 De", value="b64de", variable=cdMode).grid(column=0, row=3, sticky="w")
+        Radiobutton(cd1, text="Base85 De", value="b85de", variable=cdMode).grid(column=0, row=4, sticky="w")
+        Radiobutton(cd1, text="Ascii85 De", value="a85de", variable=cdMode).grid(column=0, row=5, sticky="w")
+        # cd lst2
+        Radiobutton(cd2, text="RC4 En", value="rc4en", variable=cdMode).grid(column=0, row=0, sticky="w")
+        Radiobutton(cd2, text="Base16 En", value="b16en", variable=cdMode).grid(column=0, row=1, sticky="w")
+        Radiobutton(cd2, text="Base32 En", value="b32en", variable=cdMode).grid(column=0, row=2, sticky="w")
+        Radiobutton(cd2, text="Base64 En", value="b64en", variable=cdMode).grid(column=0, row=3, sticky="w")
+        Radiobutton(cd2, text="Base85 En", value="b85en", variable=cdMode).grid(column=0, row=4, sticky="w")
+        Radiobutton(cd2, text="Ascii85 En", value="a85en", variable=cdMode).grid(column=0, row=5, sticky="w")
+        # interface
+        valueEntry = Entry(usrPrompt)
+        valueEntry.pack()
+        valueEntry.insert(0, "<Value>")
+        keyEntry = Entry(usrPrompt)
+        keyEntry.pack()
+        keyEntry.insert(0, "<Key if needed>")
+        cdResultEntry = Entry(usrPrompt)
+        cdResultEntry.pack()
+        cdResultEntry.insert(0, "<Code>")
+        # de or en button
+        Button(usrPrompt, text="Process!", command=cdFunc).pack()
+    # main loop
     rootWindow.mainloop()
     
