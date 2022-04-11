@@ -2,8 +2,7 @@
 Cryptographic Generator
 
 **Y**ou **a**re **t**he **o**nly **o**ne
-
-<img src="https://websiteimage-1258728659.cos.na-siliconvalley.myqcloud.com/Yatoo.png">
+![](https://websiteimage-1258728659.cos.na-siliconvalley.myqcloud.com/Yatoo.png)
 
 #### Functions
 
