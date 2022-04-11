@@ -3,8 +3,6 @@ Cryptographic Generator
 
 **Y**ou **a**re **t**he **o**nly **o**ne
 
-![Yatoo](https://websiteimage-1258728659.cos.na-siliconvalley.myqcloud.com/Yatoo_m.png)
-
 #### Functions
 
 - Random Password Generator
@@ -14,3 +12,7 @@ Cryptographic Generator
   - lib: hashlib
 - B/A Encode Decode
   - lib: base64 / Crypto.Cipher
+
+![Yatoo](https://websiteimage-1258728659.cos.na-siliconvalley.myqcloud.com/Yatoo.png)
+
+
