@@ -3,7 +3,7 @@ Cryptographic Generator
 
 **Y**ou **a**re **t**he **o**nly **o**ne
 
-![Yatoo](https://websiteimage-1258728659.cos.na-siliconvalley.myqcloud.com/Yatoo.png)
+![Yatoo](https://websiteimage-1258728659.cos.na-siliconvalley.myqcloud.com/Yatoo_s.png)
 
 #### Functions
 
