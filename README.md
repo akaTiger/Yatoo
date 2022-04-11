@@ -3,7 +3,7 @@ Cryptographic Generator
 
 **Y**ou **a**re **t**he **o**nly **o**ne
 
-<img src="https://websiteimage-1258728659.cos.na-siliconvalley.myqcloud.com/Yatoo.png" style="zoom: 33%;" />
+<img src="https://websiteimage-1258728659.cos.na-siliconvalley.myqcloud.com/Yatoo.png">
 
 #### Functions
 
