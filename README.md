@@ -31,4 +31,4 @@ Cryptographic Generator
 
 
 
-***Variable naming has nothing to do with the author's political stance***
+***Variable naming has nothing to do with my political stance***
